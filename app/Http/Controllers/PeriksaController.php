@@ -12,4 +12,12 @@ class PeriksaController extends Controller
     {
         return view('dokter/periksa.index');
     }
+
+    public function create()
+    {
+        // misalnya kamu ingin menampilkan list dokter untuk dipilih
+        $dokter = \App\Models\User::where('role', 'dokter')->get();
+        return view('pasien.periksa.create', compact('dokter'));
+    }
+
 }

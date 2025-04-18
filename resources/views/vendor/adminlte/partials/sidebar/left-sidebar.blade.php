@@ -20,24 +20,49 @@
                 @endif>
 
                 {{-- Menampilkan menu khusus jika user berada di halaman dokter --}}
-                @if (request()->is('dokter*'))
+                @php
+                    $role = Auth::user()->role ?? null;
+                @endphp
+
+                @if ($role === 'dokter')
                     <li class="nav-item">
-                        <a href="/dokter/periksa" class="nav-link {{ request()->is('dokter/periksa') ? 'active' : '' }}">
-                            <i class="far fa-circle nav-icon"></i>
+                        <a href="/dokter" class="nav-link {{ request()->is('dokter/dashboard') ? 'active' : '' }}">
+                            <i class="nav-icon fas fa-home"></i>
+                            <p>Dashboard</p>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="/dokter/periksa" class="nav-link {{ request()->is('dokter/periksa*') ? 'active' : '' }}">
+                            <i class="nav-icon fas fa-stethoscope"></i>
                             <p>Periksa</p>
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a href="/dokter/obat" class="nav-link {{ request()->is('dokter/obat') ? 'active' : '' }}">
-                            <i class="far fa-circle nav-icon"></i>
+                        <a href="/dokter/obat" class="nav-link {{ request()->is('dokter/obat*') ? 'active' : '' }}">
+                            <i class="nav-icon fas fa-pills"></i>
                             <p>Obat</p>
                         </a>
                     </li>
-                @else
-                    {{-- Configured sidebar links --}}
-                    @each('adminlte::partials.sidebar.menu-item', $adminlte->menu('sidebar'), 'item')
+                @elseif ($role === 'pasien')
+                    <li class="nav-item">
+                        <a href="/pasien" class="nav-link {{ request()->is('pasien/dashboard') ? 'active' : '' }}">
+                            <i class="nav-icon fas fa-home"></i>
+                            <p>Dashboard</p>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="/pasien/periksa" class="nav-link {{ request()->is('dokter/periksa*') ? 'active' : '' }}">
+                            <i class="nav-icon fas fa-stethoscope"></i>
+                            <p>Periksa</p>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="/pasien/riwayat" class="nav-link {{ request()->is('pasien/riwayat*') ? 'active' : '' }}">
+                            <i class="nav-icon fas fa-history"></i>
+                            <p>Riwayat Periksa</p>
+                        </a>
+                    </li>
                 @endif
-
             </ul>
         </nav>
     </div>

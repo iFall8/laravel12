@@ -4,6 +4,8 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\PeriksaController;
 use App\Http\Controllers\ObatController;
+use App\Http\Controllers\RiwayatController;
+use App\Http\Controllers\PeriksaControllerPn;
 
 Route::get('/', function () {
     return redirect('/login');
