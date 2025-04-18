@@ -14,18 +14,15 @@ class Periksa extends Model
         'biaya_periksa',
     ];
 
-    public function pasien()
-    {
+    public function pasien(){
         return $this->belongsTo(User::class, 'id_pasien');
     }
 
-    public function dokter()
-    {
+    public function dokter(){
         return $this->belongsTo(User::class, 'id_dokter');
     }
 
-    /*public function detailPeriksa()
-    {
-        return $this->hasMany(DetailPeriksa::class, 'id_periksa');
-    }*/
+    public function detailPeriksa(){
+        return $this->hasMany(Detail_periksa::class, 'id_periksa');
+    }
 }

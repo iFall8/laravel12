@@ -18,14 +18,15 @@ class User extends Authenticatable
      * @var list<string>
      */
     protected $fillable = [
-        'name',
+        'nama',
         'alamat',
         'no_hp',
-        'role',
         'email',
+        'role',
         'password',
+        
     ];
-
+    
     public function periksaSebagaiPasien()
     {
         return $this->hasMany(Periksa::class, 'id_pasien');
