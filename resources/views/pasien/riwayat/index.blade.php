@@ -2,47 +2,38 @@
 
 {{-- Customize layout sections --}}
 
-@section('subtitle', 'Welcome')
-@section('content_header_title', 'Home')
-@section('content_header_subtitle', 'Welcome')
+@section('subtitle', 'Riwayat Periksa')
+@section('content_header_title', 'Riwayat Periksa')
 
 @section('content_body')
-    <div class="card">
-                <div class="card-header">Periksa</div>
-
-                <div class="card-body">
-                    <table class="table caption-top">
-                        <caption>List of users</caption>
-                            <thead>
-                                <tr>
-                                    <th scope="col">#</th>
-                                    <th scope="col">First</th>
-                                    <th scope="col">Last</th>
-                                    <th scope="col">Handle</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <th scope="row">1</th>
-                                    <td>Mark</td>
-                                    <td>Otto</td>
-                                    <td>@mdo</td>
-                                </tr>
-                                <tr>
-                                    <th scope="row">2</th>
-                                    <td>Jacob</td>
-                                    <td>Thornton</td>
-                                    <td>@fat</td>
-                                </tr>
-                                <tr>
-                                    <th scope="row">3</th>
-                                    <td>Larry</td>
-                                    <td>the Bird</td>
-                                    <td>@twitter</td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
-            </div>
-        </div>
+<div class="card">
+    <div class="card-body">
+        <table class="table caption-top">
+            <thead>
+                <tr>
+                    <th>No</th>
+                    <th>Tanggal</th>
+                    <th>Catatan</th>
+                    <th>Obat</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach ($periksas as $periksa)
+                    <tr>
+                        <td>{{ $loop->iteration }}</td>
+                        <td>{{ $periksa->tgl_periksa }}</td>
+                        <td>{{ $periksa->catatan ?? '-' }}</td>
+                        <td>
+                            @forelse ($periksa->detailPeriksa as $detail)
+                                {{ $detail->obat->nama_obat ?? '-' }}<br>
+                            @empty
+                                Tidak ada obat
+                            @endforelse
+                        </td>
+                    </tr>
+                @endforeach
+            </tbody>
+        </table>
+    </div>
+</div>
 @endsection

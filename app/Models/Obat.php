@@ -17,4 +17,9 @@ class Obat extends Model
     public function detailPeriksa(){
         return $this->hasMany(Detail_periksa::class, 'id_obat');
     }
+    public function periksas()
+    {
+        return $this->belongsToMany(Periksa::class, 'detail_periksas', 'id_obat', 'id_periksa')
+                    ->withTimestamps();
+    }
 }

@@ -16,7 +16,6 @@
                         <x-adminlte-options :options="$dokters" empty-option="Pilih dokter"/>
                     </x-adminlte-select>
                 </div>
-
                 <div class="form-group">
                     <label for="nama">Tanggal</label>
                     <input type="date" name="tgl_periksa" id="tgl_periksa"
@@ -26,7 +25,7 @@
                 style="gap:10px;">
                     <button type="submit" class="btn
                     btn-success">Submit</button>
-                    <a href="{{route('obat.index')}}" class="btn
+                    <a href="{{route('periksa.index')}}" class="btn
                     btn-secondary">Kembali</a>
                 </div>
             </form>

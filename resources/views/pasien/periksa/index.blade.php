@@ -18,24 +18,14 @@ btn-primary">Jadwalkan Periksa</a>
                         <th>No</th>
                         <th>Dokter</th>
                         <th>Tanggal</th>
-                        <th>Biaya</th>
-                        <th>Status</th>
                     </tr>
                 </thead>
                 <tbody>
-                    @foreach ($periksa as $o)
+                    @foreach ($periksas as $o)
                         <tr>
-                            <td>{{ $o->id }}</td>
+                            <td>{{ $loop->iteration }}</td>
                             <td>{{ $o->dokter->nama  }}</td>
                             <td>{{ $o->tgl_periksa }}</td>
-                            <td>{{ $o->biaya_periksa }}</td>
-                            <td>
-                                @if ($o->created_at != $o->updated_at)
-                                    <span class="badge bg-success">Selesai</span>
-                                @else
-                                    <span class="badge bg-danger">Belum Selesai</span>
-                                @endif
-                            </td>
                         </tr>
                     @endforeach
                 </tbody>

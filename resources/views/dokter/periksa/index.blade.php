@@ -68,16 +68,43 @@
                   <thead>
                     <tr>
                       <th>No</th>
-                      <th>Nama</th>
+                      <th>Pasien</th>
+                      <th>Keluhan</th>
+                      <th>Tanggal</th>
+                      <th>Biaya</th>
+                      <th>Obat</th>
                       <th>Aksi</th>
                     </tr>
                   </thead>
                   <tbody>
-                    <tr>
-                      <td>1</td>
-                      <td>Test</td>
-                      <td><span>Edit</span></td>
-                    </tr>
+                    @if ($periksas->count() > 0)
+                      @foreach ($periksas as $periksa)
+                        <tr>
+                          <td>{{ $loop->iteration }}</td>
+                          <td>{{ $periksa->pasien->nama }}</td>
+                          <td>{{ $periksa-> catatan }}</td>
+                          <td>{{ $periksa->tgl_periksa }}</td>
+                          <td>{{ $periksa->biaya_periksa }}</td>
+                          <td>
+                            @foreach ($periksa->obats as $obat)
+                              <span class="badge badge-info">{{ $obat->nama_obat }}</span><br>
+                            @endforeach
+                          </td>
+                          <td>
+                            <a href="{{ url('dokter/periksa/'. $periksa->id . '/edit') }}" class="btn btn-sm btn-warning">Edit</a>
+                            <form action="{{ url('dokter/periksa/' . $periksa->id) }}" method="POST" style="display:inline;">
+                              @csrf
+                              @method('DELETE')
+                              <button type="submit" class="btn btn-sm btn-danger" onclick="return confirm('Yakin ingin menghapus obat ini?')">Delete</button>
+                            </form>
+                          </td>
+                        </tr>
+                      @endforeach
+                    @else
+                      <tr>
+                        <td colspan="5" class="text-center">Tidak ada data obat.</td>
+                      </tr>
+                    @endif
                   </tbody>
                 </table>
               </div>

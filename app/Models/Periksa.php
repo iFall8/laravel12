@@ -25,4 +25,10 @@ class Periksa extends Model
     public function detailPeriksa(){
         return $this->hasMany(Detail_periksa::class, 'id_periksa');
     }
+    public function obats()
+    {
+        return $this->belongsToMany(Obat::class, 'detail_periksas', 'id_periksa', 'id_obat')
+                    ->withTimestamps();
+    }
+
 }

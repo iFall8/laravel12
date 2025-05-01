@@ -21,8 +21,8 @@
 
         {{-- Name field --}}
         <div class="input-group mb-3">
-            <input type="text" name="name" class="form-control @error('name') is-invalid @enderror"
-                value="{{ old('name') }}" placeholder="{{ __('adminlte::adminlte.full_name') }}" autofocus>
+            <input type="text" name="nama" class="form-control @error('nama') is-invalid @enderror"
+                value="{{ old('nama') }}" placeholder="{{ __('adminlte::adminlte.full_name') }}" autofocus>
 
             <div class="input-group-append">
                 <div class="input-group-text">
@@ -37,6 +37,27 @@
             @enderror
         </div>
 
+        {{-- Alamat Field --}}
+        <div class="input-group mb-3">
+            <input type="text" name="alamat" class="form-control" placeholder="Alamat" required>
+            <div class="input-group-append">
+                <div class="input-group-text">
+                    <span class="fas fa-map-marker-alt"></span>
+                </div>
+            </div>
+        </div>
+        
+        {{-- Nomor HP Field --}}
+        <div class="input-group mb-3">
+            <input type="text" name="no_hp" class="form-control" placeholder="Nomor HP" required>
+            <div class="input-group-append">
+                <div class="input-group-text">
+                    <span class="fas fa-phone"></span>
+                </div>
+            </div>
+        </div>
+
+        {{-- No HP Field --}}
         {{-- Email field --}}
         <div class="input-group mb-3">
             <input type="email" name="email" class="form-control @error('email') is-invalid @enderror"

@@ -132,8 +132,8 @@ return [
     | https://github.com/jeroennoten/Laravel-AdminLTE/wiki/Basic-Configuration
     |
     */
-
-    'usermenu_enabled' => true,
+    
+    'usermenu_enabled' => false,
     'usermenu_header' => false,
     'usermenu_header_class' => 'bg-primary',
     'usermenu_image' => false,
@@ -325,6 +325,11 @@ return [
         'text' => 'Obat',
         'url'  => '/dokter/obat',
         'icon' => 'fas fa-pills',
+    ],
+    [
+        'text' => 'Logout',
+        'url'  => '/dokter#',
+        'icon' => 'fas fa-sign-out-alt',
     ],
 ],
 

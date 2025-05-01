@@ -18,12 +18,15 @@ Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
-Route::prefix('dokter')->group(function() {
+Route::prefix('dokter')->middleware('checkrole:dokter')->group(function () {
     Route::resource('obat', ObatController::class);
-    Route::resource('periksa', PeriksaController::class);
+    Route::get('periksa', [PeriksaController::class, 'index']);
+    Route::get('periksa/{id}/edit', [PeriksaController::class, 'edit']);
+    Route::put('periksa/{id}', [PeriksaController::class, 'update']);
+    Route::delete('periksa/{id}', [PeriksaController::class, 'destroy']);
 });
 
-Route::prefix('pasien')->group(function() {
+Route::prefix('pasien')->middleware('checkrole:pasien')->group(function () {
     Route::resource('periksa', PeriksaControllerPn::class);
     Route::resource('riwayat', RiwayatController::class);
 });
