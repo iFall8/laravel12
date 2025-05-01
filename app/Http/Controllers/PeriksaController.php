@@ -26,6 +26,10 @@ class PeriksaController extends Controller
     // Proses update biaya
     public function update(Request $request, $id)
     {
+        $request->validate([
+            'catatan' => 'nullable|string|max:1000',
+        ]);
+        
         $periksa = Periksa::findOrFail($id);
     
         // Ambil ID obat yang dipilih
@@ -38,6 +42,7 @@ class PeriksaController extends Controller
         $totalBiaya = $totalHargaObat + 30000;
     
         // Update data periksa
+        $periksa->catatan = $request->input('catatan'); // Tambahkan catatan
         $periksa->biaya_periksa = $totalBiaya;
         $periksa->save();
     

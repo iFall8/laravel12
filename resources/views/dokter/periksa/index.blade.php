@@ -69,7 +69,7 @@
                     <tr>
                       <th>No</th>
                       <th>Pasien</th>
-                      <th>Keluhan</th>
+                      <th>Catatan</th>
                       <th>Tanggal</th>
                       <th>Biaya</th>
                       <th>Obat</th>

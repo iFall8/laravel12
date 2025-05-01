@@ -50,6 +50,11 @@
               <form action="{{ url('dokter/periksa/' . $periksa->id) }}" method="POST">
                 @csrf
                 @method('PUT')
+                <div class="form-group mt-3">
+                  <label for="catatan">Catatan Dokter:</label>
+                  <textarea name="catatan" id="catatan" rows="4" class="form-control">{{ old('catatan', $periksa->catatan) }}</textarea>
+                </div>
+
                 <div class="form-group">
                 <label>Obat yang diberikan:</label>
                 <div class="row">
